@@ -1,0 +1,62 @@
+<style type="text/css">
+input[type="text"], input[type="password"], input[type="email"]{
+	border: 1px solid dashed;
+	background-color: rgb(221,216,212);
+	width: 480px;
+	padding: 0.5em;
+	font-size: 1.0em;
+}
+input[type="submit"]{
+	color:white;
+	font-size: 1.0em;
+	font-family: Arial,Serif,Georgia;
+	width: 200px;
+	height: 40px;
+	background-color: #5D0580;
+	border: 5px solid;
+	border-bottom-left-radius: 35px;
+	border-bottom-right-radius: 35px;
+	border-top-left-radius: 35px;
+	border-bottom-right-radius: 35px;
+	border-color: rgb(221,216,212);
+	font-weight: bold;
+	float: right;
+	margin-top: 10px;
+}
+div#centerpage{
+	width: 500px;
+	margin: 0 auto;
+}
+.fieldinfo{
+	color: rgb(251,174,44);
+	font-family: Arial,Serif,Georgia;
+	font-size: 1.0em;
+}
+div.message{
+	border:2px solid #c0c0c0;
+	padding-top: 1em;
+	color: white;
+	background-color: #dd0000;
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0 auto;
+	width: 400px;
+	height: 40px;
+	text-align: center;
+	margin-bottom: 1em;
+}
+div.successMessage{
+	border:2px solid #c0c0c0;
+	padding-top: 1em;
+	color: white;
+	background-color: #00a600;
+	font-weight: bold;
+	font-size: 1em;
+	margin: 0 auto;
+	width: 400px;
+	height: 40px;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+</style>
