@@ -8,11 +8,9 @@
 <?php
 if (isset($_POST["Submit"])) {
 	# code...
-	$Username=mysql_real_escape_string($_POST["Username"]);
 	$Email=mysql_real_escape_string($_POST["Email"]);
 	$Password=mysql_real_escape_string($_POST["Password"]);
-	$ConfirmPassword=mysql_escape_string($_POST["ConfirmPassword"]);
-	if (empty($Username) && empty($Email) && empty($Password) && empty($ConfirmPassword)) {
+	if (empty($Email) || empty($Password)) {
 		# code...
 		$_SESSION["message"]="All fields must be filled out";
 		redirectTo("UserRegistration.php");
@@ -49,8 +47,6 @@ if (isset($_POST["Submit"])) {
 	}
 
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
