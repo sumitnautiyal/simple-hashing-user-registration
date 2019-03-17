@@ -5,13 +5,13 @@
 	{
 		header("Location:".$NewLocation);
 	}
-	function passwordEncrption($password)
+	function passwordEncrption($Password)
 	{
 		$blowFishHashFormat = "$2y$10$";
 		$salt_length = 22;
 		$salt= generateSalt($salt_length);
 		$formatingBlowfishWithSalt = $blowFishHashFormat . $salt;
-		$hash = crypt($password,$formatingBlowfishWithSalt);
+		$hash = crypt($Password,$formatingBlowfishWithSalt);
 		return $hash;
 	}
 	function generateSalt($length)
@@ -22,9 +22,9 @@
 		$salt=substr($Modified_Base64_String,0,$length);
 		return $salt;
 	}
-	function passwordCheck($password,$existingHash)
+	function passwordCheck($Password,$existingHash)
 	{
-		$hash=crypt($password,$existingHash);
+		$hash=crypt($Password,$existingHash);
 		/*$password is the value user enters, $existingHash is the value stored in the database*/
 		if ($hash === $existingHash) {
 					# code...
@@ -44,6 +44,9 @@
 		}else{
 			return false;
 		}
+	}
+	function loginAttempt($Email,$Password){
+
 	}
 
 ?>

@@ -18,7 +18,7 @@ if (isset($_POST["Submit"])) {
 		redirectTo("UserRegistration.php");
 		header("Location:UserRegistration.php");
 		exit;
-	}elseif ($Password !== $ConfirmPassword) {
+			}elseif ($Password !== $ConfirmPassword) {
 		# code...
 		$_SESSION["message"]="Passwords do not match";
 		redirectTo("UserRegistration.php");
