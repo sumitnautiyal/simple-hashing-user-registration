@@ -1,17 +1,18 @@
 <?php require_once("Include/Db.php");	?>
 <?php
 
-	function redirectTo($NewLocation)
+	function redirect_to($newLocation)
 	{
-		header("Location:".$NewLocation);
+		header("Location:". $newLocation);
+		exit;
 	}
-	function passwordEncrption($Password)
+	function passwordEncrption($password)
 	{
 		$blowFishHashFormat = "$2y$10$";
-		$salt_length = 22;
-		$salt= generateSalt($salt_length);
+		$saltLength = 22;
+		$salt= generateSalt($saltLength);
 		$formatingBlowfishWithSalt = $blowFishHashFormat . $salt;
-		$hash = crypt($Password,$formatingBlowfishWithSalt);
+		$hash = crypt($password,$formatingBlowfishWithSalt);
 		return $hash;
 	}
 	function generateSalt($length)
@@ -22,9 +23,9 @@
 		$salt=substr($Modified_Base64_String,0,$length);
 		return $salt;
 	}
-	function passwordCheck($Password,$existingHash)
+	function passwordCheck($password,$existingHash)
 	{
-		$hash=crypt($Password,$existingHash);
+		$hash=crypt($password,$existingHash);
 		/*$password is the value user enters, $existingHash is the value stored in the database*/
 		if ($hash === $existingHash) {
 					# code...
@@ -34,9 +35,9 @@
 				return false;
 			}
 	}
-	function checkEmailExists($Email){
+	function checkEmailExists($email){
 		global $connectingDb;
-		$query="SELECT * FROM registration where email='$Email'";
+		$query="SELECT * FROM registration WHERE email='$email'";
 		$execute=mysql_query($query);
 		if (mysql_num_rows($execute>0)) {
 			# code...
@@ -45,8 +46,22 @@
 			return false;
 		}
 	}
-	function loginAttempt($Email,$Password){
-
+	function loginAttempt($email,$password){
+		$query="SELECT * FROM registration WHERE email='$email' 	";
+		$execute=mysql_query($query);
+		if($admin=mysql_fetch_assoc($execute)){
+			if(passwordCheck($password, $admin['password'])){		//making super global of admin
+					return $admin;
+			}else{
+				return NULL;
+			}
+		}
+	}
+	function confirmingAccountActiveStatus(){
+		global $connectingDb;
+		$query="SELECT * FROM registration WHERE active='ON'";
+		$execute=mysql_query($query);
+		
 	}
 
 ?>

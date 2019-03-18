@@ -8,43 +8,44 @@
 <?php
 if (isset($_POST["Submit"])) {
 	# code...
-	$Username=mysql_real_escape_string($_POST["Username"]);
-	$Email=mysql_real_escape_string($_POST["Email"]);
-	$Password=mysql_real_escape_string($_POST["Password"]);
-	$ConfirmPassword=mysql_escape_string($_POST["ConfirmPassword"]);
-	if (empty($Username) && empty($Email) && empty($Password) && empty($ConfirmPassword)) {
+	$username=mysql_real_escape_string($_POST["Username"]);
+	$email=mysql_real_escape_string($_POST["email"]);
+	$password=mysql_real_escape_string($_POST["password"]);
+	$confirmPassword=mysql_escape_string($_POST["ConfirmPassword"]);
+	$token=bin2hex(openssl_random_pseudo_bytes(40));
+	if (empty($username) && empty($email) && empty($password) && empty($confirmPassword)) {
 		# code...
 		$_SESSION["message"]="All fields must be filled out";
-		redirectTo("UserRegistration.php");
+		redirect_to("UserRegistration.php");
 		header("Location:UserRegistration.php");
 		exit;
-			}elseif ($Password !== $ConfirmPassword) {
+			}elseif ($password !== $confirmPassword) {
 		# code...
 		$_SESSION["message"]="Passwords do not match";
-		redirectTo("UserRegistration.php");
+		redirect_to("UserRegistration.php");
 		
-	}elseif (strlen($Password<4)) {
+	}elseif (strlen($password<4)) {
 		# code...
 		$_SESSION["message"]="Password should include atleast 4 values";
-		redirectTo("UserRegistration.php");
-	}elseif (checkEmailExists($Email)) {
+		redirect_to("UserRegistration.php");
+	}elseif (checkEmailExists($email)) {
 			# code...
 			$_SESSION["message"]="Email already in use";
-			redirectTo("UserRegistration.php");
+			redirect_to("UserRegistration.php");
 		}
 	else{
 		global $connectingDb;
-		$hashedPassword=passwordEncrption($Password);
-		$query="INSERT INTO registration(Name, Email, Password)VALUES('$Username','$Email','$hashedPassword')";
+		$hashedPassword=passwordEncrption($password);
+		$query="INSERT INTO registration(name, email, password,token,active)VALUES('$username','$email','$hashedPassword','$token', 'OFF')";
 		$execute=mysql_query($query);
 		if ($execute) {
 			# code...
 			$_SESSION["successMessage"]="Great";
-			redirectTo(UserRegistration.php);
+			redirect_to(UserRegistration.php);
 		}
 		else{
 			$_SESSION["message"]="Something went wrong. Try Again!";
-			redirectTo(UserRegistration.php);
+			redirect_to(UserRegistration.php);
 		}
 	}
 
