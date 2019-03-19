@@ -18,6 +18,9 @@ if (isset($_POST["Submit"]))
 		if (confirmingAccountActiveStatus) {	//Check if the user has not confirmed account through email
 				$foundAccount=loginamettempt($email,$Password);
 				if ($foundAccount){
+					$_SESSION["userId"]=$foundAccount['Id'];
+					$_SESSION["userName"]=$foundAccount['Name'];
+					$_SESSION["userEmail"]=$foundAccount['Email'];
 					redirect_to("Welcome.php");
 				}
 				else{

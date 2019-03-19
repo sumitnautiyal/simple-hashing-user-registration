@@ -63,5 +63,16 @@
 		$execute=mysql_query($query);
 		
 	}
+	function login(){
+		if (isset($_SESSION["userId"])) {
+			return TRUE;
+		}
+	}
+	function confirmLogin(){
+		if (!login()) {
+			$_SESSION["message"]="You have to login first";
+			redirect_to("Login.php");
+		}
+	}
 
 ?>
