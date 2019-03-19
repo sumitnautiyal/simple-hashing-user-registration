@@ -11,6 +11,6 @@
 		echo "Your Id is" . $_SESSION['userId'] . "with the name of" . "$_SESSION["userName"]" . "and email as" . $_SESSION["userEmail"] ;
 	?>
 	<h1>Welcome User</h1>
-	<<a href="Logout.php"></a>
+	<<a href="Logout.php">Logout Here</a>
 </body>
 </html>
