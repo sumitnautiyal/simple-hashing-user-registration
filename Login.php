@@ -1,9 +1,9 @@
-<?php require_once("Include/Style.css")  
+<?php require_once("Include/Style.css") ; 
 //<?php include_once('fix_mysql.inc.php'); 
 ?>
-<?php require_once("Include/Session.php")  ?>
-<?php require_once("Include/Functions.php")  ?>
-<?php require_once("Include/Db.php")  ?>
+<?php require_once("Include/Session.php")  ; ?>
+<?php require_once("Include/Functions.php") ;  ?>
+<?php require_once("Include/Db.php")  ; ?>
 <?php
 if (isset($_POST["Submit"])) 
 {
@@ -21,6 +21,11 @@ if (isset($_POST["Submit"]))
 					$_SESSION["userId"]=$foundAccount['Id'];
 					$_SESSION["userName"]=$foundAccount['Name'];
 					$_SESSION["userEmail"]=$foundAccount['Email'];
+					if (isset($_POST["Remember"])) {
+						$expireTime=time()+86400;
+						setcookie("settingEmail",$email,$expireTime);
+						setcookie("settingName",$userName,$expireTime);
+					}
 					redirect_to("Welcome.php");
 				}
 				else{
@@ -46,7 +51,8 @@ if (isset($_POST["Submit"]))
 	<fieldset>
 		<span class="fieldinfo">email:</span><br><input type="email" name="email"	value=""><br>
 		<span class="fieldinfo">Password:</span><br><input type="Password" name="Password"	value=""><br>
-		<input type="Checkbox" name="Remember" ><span class="fieldinfo"></span> Remember Me <br>	
+		<input type="checkbox" name="Remember" ><span class="fieldinfo"></span> Remember Me <br>	
+		<a href="Recover.php"><span class="fieldinfo"> Forgot Password </span></a>
 		<input type="Submit" name="Submit" value="Login"><br>
 	</fieldset>
 	</form>

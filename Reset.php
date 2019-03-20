@@ -1,18 +1,13 @@
-<?php require_once("Include/Style.css")  ;
-//<?php include_once('fix_mysql.inc.php'); 
-?>
+<?php require_once("Include/Style.css")  ; ?>
 <?php require_once("Include/Session.php")  ; ?>
 <?php require_once("Include/Functions.php") ;  ?>
 <?php require_once("Include/Db.php") ;  ?>
 <?php
 if (isset($_POST["Submit"])) {
 	# code...
-	$username=mysql_real_escape_string($_POST["Username"]);
-	$email=mysql_real_escape_string($_POST["email"]);
 	$password=mysql_real_escape_string($_POST["password"]);
 	$confirmPassword=mysql_escape_string($_POST["ConfirmPassword"]);
-	$token=bin2hex(openssl_random_pseudo_bytes(40));
-	if (empty($username) && empty($email) && empty($password) && empty($confirmPassword)) {
+	if (empty($password) || empty($confirmPassword)) {
 		# code...
 		$_SESSION["message"]="All fields must be filled out";
 		redirect_to("UserRegistration.php");

@@ -1,6 +1,7 @@
-<?php require_once("Include/Session.php")  ?>
-<?php require_once("Include/Db.php")  ?>
-<?php require_once("Include/Functions.php")  ?>
+<?php require_once("Include/Session.php") ; ?>
+<?php require_once("Include/Db.php") ; ?>
+<?php require_once("Include/Functions.php") ; ?>
+<?php require_once("Include/Style.css") ; ?>
 
 <?php
 	global $connectingDb;
