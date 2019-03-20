@@ -44,9 +44,10 @@ if (isset($_POST["Submit"]))
 <div id="centerpage">
 	<form action="Login.php" method="POST">
 	<fieldset>
-		<span class="fieldinfo">email:</span><br><input type="email" nameme="email"	value=""><br>
-		<span class="fieldinfo">Password:</span><br><input type="Password" nameme="Password"	value=""><br>
-		<input type="Submit" nameme="Submit" value="Login">		
+		<span class="fieldinfo">email:</span><br><input type="email" name="email"	value=""><br>
+		<span class="fieldinfo">Password:</span><br><input type="Password" name="Password"	value=""><br>
+		<input type="Checkbox" name="Remember" ><span class="fieldinfo"></span> Remember Me <br>	
+		<input type="Submit" name="Submit" value="Login"><br>
 	</fieldset>
 	</form>
 </div>

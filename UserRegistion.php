@@ -63,10 +63,10 @@ if (isset($_POST["Submit"])) {
 <div id="centerpage">
 	<form action="UserRegistration.php" method="POST">
 	<fieldset>
-		<span class="fieldinfo">Username:</span><br><input type="text" Name="Username"	value=""><br>
-		<span class="fieldinfo">Email:</span><br><input type="Email" Name="Email"	value=""><br>
-		<span class="fieldinfo">Password:</span><br><input type="Password" Name="Password"	value=""><br>
-		<span class="fieldinfo">Confirm Password:</span><br><input type="Password" Name="ConfirmPassword"	value=""><br>
+		<span class="fieldinfo">Username:</span><br><input type="text" name="Username"	value=""><br>
+		<span class="fieldinfo">Email:</span><br><input type="Email" name="Email"	value=""><br>
+		<span class="fieldinfo">Password:</span><br><input type="Password" name="Password"	value=""><br>
+		<span class="fieldinfo">Confirm Password:</span><br><input type="Password" name="ConfirmPassword"	value=""><br>
 		<input type="Submit" name="Submit" value="Register">
 		 
 		

@@ -1,4 +1,4 @@
-<?php require_once("Include/Db.php");	?>
+<?php require_once("Include/Db.php") ;	?>
 <?php
 
 	function redirect_to($newLocation)
@@ -64,7 +64,7 @@
 		
 	}
 	function login(){
-		if (isset($_SESSION["userId"])) {
+		if (isset($_SESSION["userId"]) || isset($_COOKIE["settingEmail"])) {
 			return TRUE;
 		}
 	}
